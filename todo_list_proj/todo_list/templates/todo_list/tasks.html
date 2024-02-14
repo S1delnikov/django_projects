@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/tasks_style.css' %}">
+    <title>Tasks</title>
+</head>
+<body>
+    <div class="greetings">
+        <p><strong>Добро пожаловать, {{ user.username }}</strong></p>
+        <form method="post" action="{% url 'users:logout' %}">
+            {% csrf_token %}
+            <button class="greetings__btn" type="submit">Выйти</button>
+            <input type="hidden" name="next" value="{% url 'todo_list:index' %}">
+        </form>
+        <!-- <a href="{% url 'users:logout' %}">Log out</a> -->
+    </div>
+    <button class="create-task-btn" type="button" onclick="addTask()">Создать задачу</button>
+    <div id="new-tasks-board"></div>
+    <div class="board">
+        <div class="tasks-board">
+            {% for task in tasks %}
+            <div class="task-card">
+                <div id="{{ task.id }}">
+                    <p>
+                        <input type="hidden" name="csrfmiddlewaretoken">
+                        <div class="task-card__date-content">
+                            <p class="task-card__date-label">Начало:</p>
+                            <input id="add-date_{{ task.id }}" type="datetime-local" value="{{ task.date_added|date:'Y-m-d'}}T{{task.date_added|time:'H:i' }}">
+                        </div> 
+                        <div class="task-card__date-content">
+                            <p class="task-card__date-label">Конец:</p>
+                            <input id="deadline_{{ task.id }}" type="datetime-local" value="{{ task.deadline|date:'Y-m-d'}}T{{task.deadline|time:'H:i' }}">
+                        </div>
+                        <div class="task_card__task-name-and-btns">
+                            <!-- {{ task.deadline|date:'M d, Y H:i' }} --> <input class="task-card__task-name" id="task-name_{{ task.id }}" type="text" value="{{ task.text }}"> 
+                            <div>
+                                <button class="task-card__task-button" type="button" onclick="updateTask({{ task.id }})">Изменить</button>
+                                <button class="task-card__task-button" type="button" onclick="delTask({{ task.id }})">Удалить</button></p>
+                            </div>
+                        </div>    
+                    {% for key_subtask, value_subtask in subtasks.items %}
+                        {% if key_subtask == task.id %}
+                            {% for vs in value_subtask %}
+                            <form action="{% url 'todo_list:update_task' task.id vs.id vs.text %}" method="post">
+                                {% csrf_token %}
+                                <p>
+                                    <input type="checkbox" 
+                                    {% if vs.status %} 
+                                        checked  onclick="location.href=`{% url 'todo_list:savemark' task.id vs.id False %}`" 
+                                    {% else %} 
+                                        onclick="location.href=`{% url 'todo_list:savemark' task.id vs.id True %}`"  
+                                    {% endif %}> 
+                                    <input type="text" value="{{ vs.text }}" name="subtask_text"> 
+                                    <!-- {{ vs.status }} -->
+                                </p>
+                                <button class="task-card__task-button" type="submit">Изменить</button>
+                                </form>
+                                <button class="task-card__task-button" type="button" onclick="delSubtask({{ vs.id }})">Удалить</button>
+                            {% endfor %}
+                            <!-- <div id="form-container"></div> -->
+                            {% endif %}
+                            {% endfor %}
+                </div>
+                <div>
+                    <button class="task-card__task-button" type="button" onclick="addSubtask({{ task.id }})">Добавить</button>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src={% static "js/masonry.pkgd.js" %}></script>
+    <script type="text/javascript" src={% static "js/usingMasonry.js" %}></script>
+    <script type="text/javascript" src={% static "js/pageUsingMasonry.js" %}></script>
+    <script type="text/javascript" src={% static "js/addTask.js" %}></script>
+    <script type="text/javascript" src={% static "js/updateTask.js" %}></script>
+    <script type="text/javascript" src={% static "js/delTask.js" %}></script>
+    <script type="text/javascript" src={% static "js/addSubtask.js" %}></script>
+    <script type="text/javascript" src={% static "js/delSubtask.js" %}></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<form method="post" action="{% url 'todo_list:savemark' %}">
+                    {% csrf_token %}
+                    <input type="checkbox" {% if vs.status %} checked {% endif %}> 
+                    <input type="submit" value="Сохранить">
+                </form>
+
+
+
+
+
+<form action="{% url 'todo_list:update_task' task.id vs.id vs.text %}" method="post" style="background-color: lightgreen;">
+                    {% csrf_token %}
+                    <p>
+                        <input type="checkbox" 
+                        {% if vs.status %} 
+                            checked  onclick="location.href=`{% url 'todo_list:savemark' task.id vs.id False %}`" 
+                        {% else %} 
+                            onclick="location.href=`{% url 'todo_list:savemark' task.id vs.id True %}`"  
+                        {% endif %}> 
+                        <input type="text" value="{{ vs.text }}" name="subtask_text"> 
+                        {{ vs.status }}
+                    </p>
+                    <button type="submit">Изменить</button>
+                    </form>
+                    <button type="button" onclick="delSubtask({{ vs.id }})">Удалить</button>
+                <div id="form-container"></div>
+
+
+
+
+
+
+|date:'M d, Y H:i'
+
+
+
+{{ task.date_added|date:'Y-m-d'}}T{{task.date_added|time:'H:i:s' }}  - для устанвоки value datetime-local

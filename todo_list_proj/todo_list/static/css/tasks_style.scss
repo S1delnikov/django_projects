@@ -1,0 +1,165 @@
+@import 'vars';
+@font-face {
+    font-family: 'PressStart2P';
+    src: url(../fonts/Press_Start_2P/PressStart2P-Regular.ttf);
+}
+
+html {
+    background-color: rgb(167, 236, 188);
+    background-image: url(../images/antarctica4.jpg);
+    background-attachment: fixed;
+    // background-repeat: repeat-y;
+    background-size: cover;
+    margin: 0;
+    font-size: 10px;
+}
+
+.greetings {
+    display: flex;
+    justify-content: space-between;
+    margin: auto 20%;
+    background-color: $greetings_backgroundcolor;
+    // width: 70%;
+    // background-color: antiquewhite;
+
+    p {
+        color: $greetings_text_color;
+        font-size: 2rem;
+    }
+
+    &__btn{
+        background-color: $greetings_btns_backgroundcolor;
+        border: none;
+        padding: 1rem 1.5rem;
+        transform: translate(0, 35%)
+        // transform-origin: 10%;
+    }
+
+    &__btn:hover {
+        background-color: $task_card_btns_backgroundcolor_hover;
+    }
+}
+
+
+.board {
+    display: block;
+    // align-self: center;
+    // justify-content: space-between;
+    // background-color: beige;
+    width: 50%;
+    margin: 0 auto;
+    // margin: 0;
+}
+
+.tasks-board {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.create-task-btn {
+    margin-left: 20%;
+    margin-top: 2rem;
+    padding: 0.5rem 2rem;
+    font-size: 2rem;
+    border: none;
+    // border-radius: 5%;
+    background-color: $create_task_btn_backgroundcolor;
+
+    &:hover {
+        background-color: $create_task_btn_backgroundcolor_hover;
+    }
+}
+
+
+.task-card {
+    // background-image: linear-gradient(to top right, rgb(100, 245, 172), rgb(215, 233, 56));
+    background-image: linear-gradient(to top right, rgb(104, 197, 240), rgb(252, 105, 105));
+    opacity: 0.9;
+    display: flex;
+    flex-direction: column;
+    // margin-left: 2rem;
+    border: 0.2rem solid #000;
+    
+    border-radius: 2.5rem;
+    padding: 1rem;
+    margin-top: 2rem;
+    height: fit-content;
+    width: 40rem;
+    * {
+        margin-top: 1rem;
+    }
+
+    &:hover {
+        background-image: linear-gradient(to right, rgb(104, 197, 240), rgb(252, 105, 105));
+        box-shadow: 0.1rem 0.1rem black;
+        // border: 0.4rem solid #000;
+        // box-shadow: out;
+        opacity: 1;
+    }
+
+    &__date-content {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__date-label {
+        font-size: 1.5rem;
+    }
+
+    &__task-name {
+        background-color: $task_text_box_backgroundcolor;
+        border: none;
+        width: 40rem;
+        font-size: 2.5rem;
+    }
+    &__task-name:focus {
+        width: 30rem;
+        font-size: 1.6rem;
+    }
+    &__task-button{
+        border: 0.1rem solid #000;
+        background-color: $task_card_btns_backgroundcolor;
+        // border: none;
+        // outline-offset:  #000;
+        width: 9rem;
+        padding: auto 1rem;
+        // border-radius: 50%; 
+        // background-color: #e9d83f;
+    }
+    &__task-button:hover {
+        background-color: $task_card_btns_backgroundcolor_hover;
+    }
+
+    &__task-name-and-btns{
+        display: flex;
+        flex-direction: row;
+        // justify-content: space-between;
+    }
+}
+
+.add-task-form {
+    margin: 1rem 20%;
+    background-color: rgba(163, 249, 255, 0.5);
+    width: 40rem;
+    &__label {
+        font-weight: 800;
+        font-size: 2rem;
+        color: $task_card_btns_backgroundcolor;
+    }
+    &__btn {
+        background-color: $task_card_btns_backgroundcolor;
+        font-size: 1.5rem;
+        padding: 0.5rem 2rem;
+        border: none;
+    }
+
+    &__btn:hover {
+        background-color: $task_card_btns_backgroundcolor_hover;
+    }
+}
+
+// #tasks-board {
+//     width: 50%;
+//     margin: 0 auto;
+// }

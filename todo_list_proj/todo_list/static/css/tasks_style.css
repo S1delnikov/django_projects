@@ -1,0 +1,128 @@
+@font-face {
+  font-family: "PressStart2P";
+  src: url(../fonts/Press_Start_2P/PressStart2P-Regular.ttf);
+}
+html {
+  background-color: rgb(167, 236, 188);
+  background-image: url(../images/antarctica4.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  margin: 0;
+  font-size: 10px;
+}
+
+.greetings {
+  display: flex;
+  justify-content: space-between;
+  margin: auto 20%;
+  background-color: rgba(104, 197, 240, 0.2);
+}
+.greetings p {
+  color: #ff4640;
+  font-size: 2rem;
+}
+.greetings__btn {
+  background-color: #fd7070;
+  border: none;
+  padding: 1rem 1.5rem;
+  transform: translate(0, 35%);
+}
+.greetings__btn:hover {
+  background-color: rgb(104, 197, 240);
+}
+
+.board {
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.tasks-board {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.create-task-btn {
+  margin-left: 20%;
+  margin-top: 2rem;
+  padding: 0.5rem 2rem;
+  font-size: 2rem;
+  border: none;
+  background-color: #fd7070;
+}
+.create-task-btn:hover {
+  background-color: rgb(104, 197, 240);
+}
+
+.task-card {
+  background-image: linear-gradient(to top right, rgb(104, 197, 240), rgb(252, 105, 105));
+  opacity: 0.9;
+  display: flex;
+  flex-direction: column;
+  border: 0.2rem solid #000;
+  border-radius: 2.5rem;
+  padding: 1rem;
+  margin-top: 2rem;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 40rem;
+}
+.task-card * {
+  margin-top: 1rem;
+}
+.task-card:hover {
+  background-image: linear-gradient(to right, rgb(104, 197, 240), rgb(252, 105, 105));
+  box-shadow: 0.1rem 0.1rem black;
+  opacity: 1;
+}
+.task-card__date-content {
+  display: flex;
+  justify-content: space-between;
+}
+.task-card__date-label {
+  font-size: 1.5rem;
+}
+.task-card__task-name {
+  background-color: rgba(0, 0, 0, 0.05);
+  border: none;
+  width: 40rem;
+  font-size: 2.5rem;
+}
+.task-card__task-name:focus {
+  width: 30rem;
+  font-size: 1.6rem;
+}
+.task-card__task-button {
+  border: 0.1rem solid #000;
+  background-color: #fd7070;
+  width: 9rem;
+  padding: auto 1rem;
+}
+.task-card__task-button:hover {
+  background-color: rgb(104, 197, 240);
+}
+.task-card__task-name-and-btns {
+  display: flex;
+  flex-direction: row;
+}
+
+.add-task-form {
+  margin: 1rem 20%;
+  background-color: rgba(163, 249, 255, 0.5);
+  width: 40rem;
+}
+.add-task-form__label {
+  font-weight: 800;
+  font-size: 2rem;
+  color: #fd7070;
+}
+.add-task-form__btn {
+  background-color: #fd7070;
+  font-size: 1.5rem;
+  padding: 0.5rem 2rem;
+  border: none;
+}
+.add-task-form__btn:hover {
+  background-color: rgb(104, 197, 240);
+}/*# sourceMappingURL=tasks_style.css.map */
