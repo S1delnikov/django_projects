@@ -6,15 +6,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static '/css/index_style.css' %}">
-    <title>Document</title>
+    <title>Registration</title>
 </head>
 <body>
-    <form action="{% url 'users:register' %}" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Зарегистрироваться</button>
-        <a href="{% url 'users:login' %}">Уже есть аккаунт</a>
-        <input type="hidden" name="next" value="{% url 'todo_list:tasks' %}">
-    </form>
+    <div class="login-form-board">
+        <form action="{% url 'users:register' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Зарегистрироваться</button>
+            <a href="{% url 'users:login' %}">Уже есть аккаунт</a>
+            <input type="hidden" name="next" value="{% url 'todo_list:tasks' %}">
+        </form>
+    </div>
 </body>
 </html>

@@ -6,18 +6,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static '/css/index_style.css' %}">
-    <title>Registration</title>
+    <title>Log in</title>
 </head>
 <body>
     {% if form.errors %}
         <p>Неправильно введены логин и/или пароль. Попробуйте снова.</p>
     {% endif %}
-    <form action="{% url 'users:login' %}" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Войти</button>
-        <a href="{% url 'users:register' %}">Регистрация</a>
-        <input type="hidden" name="next" value="{% url 'todo_list:tasks' %}">
-    </form>
+    <div class="login-form-board">
+        <form action="{% url 'users:login' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Войти</button>
+            <a href="{% url 'users:register' %}">Регистрация</a>
+            <input type="hidden" name="next" value="{% url 'todo_list:tasks' %}">
+        </form>
+    </div>
 </body>
 </html>

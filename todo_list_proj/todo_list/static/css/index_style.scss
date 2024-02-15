@@ -1,11 +1,18 @@
 html {
-    background-color: rgb(116, 248, 116);
+    background-color: rgb(104, 197, 240);
     font-size: 10px;
+    margin: 0;
 }
 
 a {
+    color: #ff0000;
     text-decoration: none;
     font-size: 2rem;
+
+    &:hover {
+        text-shadow: 0 0 #ff0000;
+        text-decoration: underline;
+    }
 }
 
 label {
@@ -13,12 +20,19 @@ label {
 }
 
 button {
-    background-color: rgb(255, 255, 99);
+    background-color: #fd7070;
     font-size: 2rem;
-    padding: 0 1rem;
+    padding: 0.5rem 1.5rem;
     border: none;
+
+    &:hover {
+        background-color: rgb(50, 154, 202);
+    }
 }
 
-button:hover {
-    background-color: rgb(255, 255, 134);
+.login-form-board {
+    width: 50%;
+    margin: 30rem auto;
+    display: flex;
+    justify-content: center;
 }

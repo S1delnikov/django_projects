@@ -9,9 +9,11 @@
     <title>Index page</title>
 </head>
 <body>
-    <div class="links">
-        <p><a href="{% url 'users:login' %}">Вход</a></p>
-        <p><a href="{% url 'users:register' %}">Регистрация</a></p>
+    <div class="login-form-board">
+        <div>
+            <p><a href="{% url 'users:login' %}">Вход</a></p>
+            <p><a href="{% url 'users:register' %}">Регистрация</a></p>
+        </div>  
     </div>
 </body>
 </html>
